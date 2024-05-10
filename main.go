@@ -30,7 +30,7 @@ func runBurst() {
 	rate := float64(10)
 	// the burst acts a bit like an overdraft facility on your debit card.
 	// with burst=3 you can go down to -3 on your account and every 100ms you get +1 credit to your account.
-	// so you can make 4 requests in quick succession before you get a +1.
+	// so you can make 3 requests in quick succession before you get a +1.
 	// if you then wait 200ms you will have gotten +2, so are at -1 on your account and can dip into the overdraft again until it hits -3.
 	burst := float64(3)
 

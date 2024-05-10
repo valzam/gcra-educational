@@ -89,6 +89,10 @@ func (r *rlextended) parseInputs(rate float64, p time.Duration, burst float64, c
 	period := float64(p.Milliseconds())
 	interval = period / rate
 	increment = interval * cost
+
+	if burst == 0 {
+		burst = 1
+	}
 	burstOffset = interval * burst
 
 	return

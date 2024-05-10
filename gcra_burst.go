@@ -21,7 +21,10 @@ func (r *rlburst) use(rate float64, p time.Duration, burst float64) res {
 	// Burst represents how many requests we can make in one go on top of the
 	// You can only burst once per period, after you've exhausted your burst you need to
 	// wait for rate limit to become available gradually
-	burstOffset := interval * (burst + 1)
+	if burst == 0 {
+		burst = 1
+	}
+	burstOffset := interval * burst
 	fmt.Printf("burstOffset: %f\n", burstOffset)
 
 	tat, now := r.getTatAndNow()

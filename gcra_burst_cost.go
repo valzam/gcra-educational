@@ -27,6 +27,9 @@ func (r *rlburstcost) use(rate float64, p time.Duration, burst float64, cost flo
 	// Burst should either be:
 	// - equal to cost. This allows us to gradually use up the rate and it also gradually refills
 	// - equal to rate. This allows us to use all of the rate instantly but we retain the gradual refills
+	if burst == 0 {
+		burst = 1
+	}
 	burstOffset := interval * burst
 	fmt.Printf("burstOffset: %f\n", burstOffset)
 
